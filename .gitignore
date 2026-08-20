@@ -47,4 +47,3 @@ backend/*.json
 !backend/package.json
 backend/__pycache__/
 *.sqlite
-*.db
