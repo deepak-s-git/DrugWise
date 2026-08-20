@@ -1,0 +1,257 @@
+@import "tailwindcss";
+
+/* ============================================================
+   MediLens — Clinical Premium Design System
+   Extracted from Stitch DESIGN.md
+   ============================================================ */
+
+@theme inline {
+  /* ── Font Families ── */
+  --font-sans: var(--font-space-grotesk); /* Futuristic Headings */
+  --font-body: var(--font-geist-sans);    /* Legible Body Text */
+  --font-mono: var(--font-geist-mono);    /* Technical Data */
+
+  /* ── Colors: Clinical Premium Palette ── */
+  --color-primary: #000101;
+  --color-primary-container: #1A1C1E;
+  --color-on-primary: #FFFFFF;
+  --color-on-primary-container: #838486;
+
+  --color-secondary: #059669; /* Clinical Emerald Green */
+  --color-secondary-container: #34D399;
+  --color-on-secondary: #FFFFFF;
+  --color-on-secondary-container: #022C22;
+
+  --color-tertiary: #DC2626; /* Medical Red */
+  --color-tertiary-container: #F87171;
+  --color-on-tertiary: #FFFFFF;
+  --color-on-tertiary-container: #450A0A;
+
+  --color-error: #BA1A1A;
+  --color-error-container: #FFDAD6;
+  --color-on-error: #FFFFFF;
+  --color-on-error-container: #93000A;
+
+  --color-background: #D5EBE0;
+  --color-on-background: #061B14;
+  --color-surface: #D5EBE0;
+  --color-surface-dim: #BBDBCE;
+  --color-surface-bright: #E8F6EF;
+  --color-surface-container-lowest: #FFFFFF;
+  --color-surface-container-low: #D5EBE0;
+  --color-surface-container: #C8E3D7;
+  --color-surface-container-high: #BBDBCE;
+  --color-surface-container-highest: #ADD4C4;
+  --color-surface-variant: #ADD4C4;
+
+  --color-on-surface: #1A1C1C;
+  --color-on-surface-variant: #44474A;
+  --color-outline: #75777A;
+  --color-outline-variant: #C5C6CA;
+  --color-surface-tint: #5D5E61;
+  --color-inverse-surface: #2F3131;
+  --color-inverse-on-surface: #F0F1F1;
+  --color-inverse-primary: #C6C6C9;
+
+  /* Card border — the exact shade from Stitch */
+  --color-card-border: #E4E4E7;
+
+  /* ── Spacing (4px base rhythm) ── */
+  --spacing-base: 4px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-margin: 32px;
+  --spacing-lg: 40px;
+  --spacing-xl: 64px;
+  --spacing-gutter: 24px;
+
+  /* ── Border Radius (Soft, not pill) ── */
+  --radius-sm: 0.125rem;
+  --radius-DEFAULT: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* ── Shadows (Clinical — minimal) ── */
+  --shadow-clinical: 0px 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* ── Base Resets ── */
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: var(--font-body);
+}
+
+
+
+/* ── Typography Utility Classes ── */
+.text-display-lg {
+  font-family: var(--font-sans);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.text-headline-lg {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.text-headline-lg-mobile {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+
+.text-headline-md {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+.text-body-lg {
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 400;
+}
+
+.text-body-md {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+.text-body-sm {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+.text-label-md {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.text-mono-data {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+}
+
+/* ── Biological Scaling Easing ── */
+.spring-ease {
+  transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ── Clinical Card (Level 1 Elevation) ── */
+.clinical-card {
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+}
+
+/* ── Clinical Card Hover ── */
+.clinical-card-interactive {
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  transition: border-color 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.clinical-card-interactive:hover {
+  border-color: var(--color-secondary);
+}
+
+/* ── Level 2 Elevation (Dropdowns, Modals) ── */
+.clinical-elevated {
+  background-color: var(--color-surface-container-lowest);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-clinical);
+}
+
+/* ── Data Table (Stitch style: horizontal rules only, no vertical borders) ── */
+.clinical-table th {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-card-border);
+  background-color: var(--color-surface-container-low);
+}
+.clinical-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--color-card-border);
+  font-size: 14px;
+  line-height: 20px;
+}
+.clinical-table tr:hover td {
+  background-color: rgba(0, 88, 190, 0.03);
+}
+
+/* ── Custom Scrollbar (Clinical sterile feel) ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-outline-variant);
+  border-radius: 3px;
+}
+
+/* ── Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Scanner Keyframes ── */
+@keyframes clinicalScan {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+@keyframes pulseBorder {
+  0%, 100% { border-color: rgba(0, 88, 190, 0.4); }
+  50% { border-color: rgba(0, 88, 190, 0.8); }
+}
+
+/* ── Fade-in-up for search results ── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Custom Cursor ── */
+* {
+  cursor: url('/pill.svg') 9 1, auto !important;
+}
