@@ -8,10 +8,17 @@ import warnings
 # Suppress deprecation warnings from paddleocr
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
-print("Loading PaddleOCR models (this may take a moment)...")
-# use_angle_cls is deprecated in 3.7, we use use_textline_orientation instead
-ocr = PaddleOCR(use_textline_orientation=True, lang='en')
-print("PaddleOCR loaded.")
+# Lazy-loaded PaddleOCR instance
+_ocr_instance = None
+
+def get_ocr():
+    global _ocr_instance
+    if _ocr_instance is None:
+        print("Lazy-loading PaddleOCR models (this may take a moment)...")
+        # use_angle_cls is deprecated in 3.7, we use use_textline_orientation instead
+        _ocr_instance = PaddleOCR(use_textline_orientation=True, lang='en')
+        print("PaddleOCR loaded.")
+    return _ocr_instance
 
 def process_image(image_bytes: bytes) -> str:
     """
@@ -23,6 +30,7 @@ def process_image(image_bytes: bytes) -> str:
         img_array = np.array(image)
         
         # Use predict instead of ocr to avoid deprecation warnings in 3.7+
+        ocr = get_ocr()
         results = ocr.predict(img_array)
         
         extracted_texts = []
