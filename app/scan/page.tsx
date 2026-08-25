@@ -73,21 +73,21 @@ export default function ScanPage() {
 
   return (
     <div className="flex flex-col flex-1 w-full pt-[120px]">
-      <div className="max-w-[1280px] mx-auto px-4 md:px-[32px] py-[40px] w-full flex flex-col items-center">
+      <div className="max-w-[80rem] mx-auto px-4 md:px-8 py-10 w-full flex flex-col items-center">
         {/* Header */}
-        <div className="mb-[40px] flex flex-col items-center text-center">
+        <div className="mb-10 flex flex-col items-center text-center">
           <h1 className="text-headline-lg text-primary mb-2">
             {state === 'processing' ? 'Processing Image Morphology' : 'Blister Pack Scanner'}
           </h1>
-          <p className="text-body-md text-on-surface-variant max-w-[600px]">
+          <p className="text-body-md text-on-surface-variant max-w-[37.5rem]">
             Extracting text, identifying package dimensions, and cross-referencing global clinical databases.
           </p>
         </div>
 
-        <motion.div layout className={`w-full mx-auto ${state === 'upload' || state === 'processing' ? 'flex flex-col gap-[24px] max-w-[800px]' : 'grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-[40px]'}`}>
+        <motion.div layout className={`w-full mx-auto ${state === 'upload' || state === 'processing' ? 'flex flex-col gap-6 max-w-[36rem]' : 'grid grid-cols-1 lg:grid-cols-[1fr_25rem] gap-10'}`}>
           {/* Left: Image Upload / Viewer */}
           <motion.div layout className="w-full flex flex-col">
-          <div className={`relative flex items-center justify-center overflow-hidden rounded-[24px] ${state === 'upload' ? 'aspect-square bg-surface-container-lowest' : 'h-[500px] bg-[#000000]'}`}>
+          <div className={`relative flex items-center justify-center overflow-hidden rounded-3xl ${state === 'upload' ? 'aspect-square bg-surface-container-lowest' : 'h-[31.25rem] bg-[#000000]'}`}>
             {state === 'upload' ? (
               <div className="w-full h-full flex flex-col justify-center bg-surface-container-lowest p-2">
                 <FileUpload onChange={handleFileSelect} />
@@ -156,11 +156,11 @@ export default function ScanPage() {
           </motion.div>
 
         {/* Right: Results */}
-        <motion.div layout className="space-y-[24px] w-full self-center">
+        <motion.div layout className="space-y-6 w-full self-center">
           {state === 'result' && scanResult?.success && scanResult.top_match && (
             <>
               {/* Match Card */}
-              <div className="clinical-card p-[24px]">
+              <div className="clinical-card p-6">
                 <div className="flex items-start justify-between mb-3">
                   <span className="text-label-md text-on-surface-variant uppercase tracking-wider">Primary Candidate</span>
                   <span className="flex items-center gap-1 text-body-sm text-on-tertiary-container bg-tertiary-container/10 px-2 py-0.5 rounded border border-on-tertiary-container/20">
