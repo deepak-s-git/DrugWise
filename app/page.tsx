@@ -34,8 +34,8 @@ export default function HomePage() {
   }, []);
 
   const scrollEnd = windowHeight * 1.2;
-  // Animate from center of screen (approx +120px down) to a comfortable top position (-20px)
-  const titleY = useTransform(scrollY, [0, scrollEnd], [120, -20]);
+  // Animate from center of screen (+220px down to fit perfectly in the slit) to a comfortable top position (-20px)
+  const titleY = useTransform(scrollY, [0, scrollEnd], [220, -20]);
 
   // Animate from slightly lower to its final resting position (0px)
   const contentOpacity = useTransform(scrollY, [scrollEnd * 0.3, scrollEnd * 0.8], [0, 1]);
