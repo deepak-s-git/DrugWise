@@ -207,16 +207,14 @@ body {
   background-color: rgba(0, 88, 190, 0.03);
 }
 
-/* ── Custom Scrollbar (Clinical sterile feel) ── */
+/* ── Custom Scrollbar (Hidden globally per request) ── */
 ::-webkit-scrollbar {
-  width: 6px;
+  display: none;
+  width: 0;
 }
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background-color: var(--color-outline-variant);
-  border-radius: 3px;
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 /* ── Reduced Motion ── */
