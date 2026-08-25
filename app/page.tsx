@@ -21,7 +21,7 @@ export default function HomePage() {
     setWindowHeight(window.innerHeight);
     const handleResize = () => setWindowHeight(window.innerHeight);
     window.addEventListener('resize', handleResize);
-    
+
     // Give hydration time to complete and show off the loading animation
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -35,7 +35,7 @@ export default function HomePage() {
 
   const scrollEnd = windowHeight * 1.2;
   // Animate from center of screen (+195px down to fit perfectly in the slit) to a comfortable top position (-20px)
-  const titleY = useTransform(scrollY, [0, scrollEnd], [195, -20]);
+  const titleY = useTransform(scrollY, [0, scrollEnd], [200, -20]);
 
   // Animate from slightly lower to its final resting position (0px)
   const contentOpacity = useTransform(scrollY, [scrollEnd * 0.3, scrollEnd * 0.8], [0, 1]);
@@ -44,10 +44,9 @@ export default function HomePage() {
   return (
     <>
       {/* ── Global Loading Screen (Hides SSR Glitch) ── */}
-      <div 
-        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background transition-opacity duration-700 pointer-events-none ${
-          isLoading ? 'opacity-100' : 'opacity-0'
-        }`}
+      <div
+        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background transition-opacity duration-700 pointer-events-none ${isLoading ? 'opacity-100' : 'opacity-0'
+          }`}
       >
         <InfinityTrack />
       </div>
@@ -75,10 +74,10 @@ export default function HomePage() {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 max-w-[800px] mx-auto px-[16px] md:px-[32px] text-center flex flex-col items-center">
+            <div className="relative z-10 max-w-[50rem] mx-auto px-4 md:px-8 text-center flex flex-col items-center">
               <motion.h1
                 style={{ y: titleY }}
-                className="font-sans text-[100px] md:text-[140px] leading-[0.8] font-black tracking-wide text-primary uppercase mb-[60px] md:mb-[80px] drop-shadow-sm"
+                className="font-sans text-[6.25rem] md:text-[8.75rem] leading-[0.8] font-black tracking-wide text-primary uppercase mb-[3.75rem] md:mb-[5rem] drop-shadow-sm"
               >
                 <ShinyText text="DRUGWISE" color="#050505" shineColor="#059669" speed={3} />
               </motion.h1>

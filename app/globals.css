@@ -87,7 +87,6 @@ body {
   background-color: var(--color-background);
   color: var(--color-on-surface);
   font-family: var(--font-body);
-  zoom: 0.9;
 }
 
 /* ── Typography Utility Classes ── */
