@@ -34,12 +34,12 @@ export default function HomePage() {
   }, []);
 
   const scrollEnd = windowHeight * 1.2;
-  // Animate from center of screen (approx +220px down from its flex position) to the top (-150px)
-  const titleY = useTransform(scrollY, [0, scrollEnd], [200, -150]);
+  // Animate from center of screen (approx +120px down) to a comfortable top position (-20px)
+  const titleY = useTransform(scrollY, [0, scrollEnd], [120, -20]);
 
-  // Animate from slightly lower to its final resting position (-30px)
+  // Animate from slightly lower to its final resting position (0px)
   const contentOpacity = useTransform(scrollY, [scrollEnd * 0.3, scrollEnd * 0.8], [0, 1]);
-  const contentY = useTransform(scrollY, [scrollEnd * 0.3, scrollEnd * 0.8], [50, -30]);
+  const contentY = useTransform(scrollY, [scrollEnd * 0.3, scrollEnd * 0.8], [80, 0]);
 
   return (
     <>
@@ -96,7 +96,7 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                <div className="w-full">
+                <div className="w-full flex justify-center">
                   <HeroSearch />
                 </div>
               </motion.div>
