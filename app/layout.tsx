@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import SmoothScroll from "@/components/layout/SmoothScroll";
 import { Chatbot } from "@/components/ui/chatbot";
+import { GlobalLoader } from "@/components/loading-ui/GlobalLoader";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable} antialiased`}
     >
       <body className="min-h-screen flex flex-col bg-background text-on-surface font-sans">
+        <GlobalLoader />
         <SmoothScroll>
           <Navbar />
           <main className="flex-grow flex flex-col">{children}</main>

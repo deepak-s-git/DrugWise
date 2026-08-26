@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Pillpit from '@/components/ui/Pillpit';
 import ScrollExpand from '@/components/ui/scroll-expand';
 import ShinyText from '@/components/ui/shiny-text';
-import { InfinityTrack } from "@/components/loading-ui/infinity-track";
 import { HeroSearch } from '@/components/search/HeroSearch';
 import { MedicineShowcaseCard } from '@/components/home/MedicineShowcaseCard';
 import { WorkflowSteps } from '@/components/home/WorkflowSteps';
@@ -15,21 +14,14 @@ import { Disclaimer } from "@/components/layout/Disclaimer";
 export default function HomePage() {
   const { scrollY } = useScroll();
   const [windowHeight, setWindowHeight] = useState(800);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setWindowHeight(window.innerHeight);
     const handleResize = () => setWindowHeight(window.innerHeight);
     window.addEventListener('resize', handleResize);
 
-    // Give hydration time to complete and show off the loading animation
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-
     return () => {
       window.removeEventListener('resize', handleResize);
-      clearTimeout(timer);
     };
   }, []);
 
@@ -43,14 +35,6 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ── Global Loading Screen (Hides SSR Glitch) ── */}
-      <div
-        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background transition-opacity duration-700 pointer-events-none ${isLoading ? 'opacity-100' : 'opacity-0'
-          }`}
-      >
-        <InfinityTrack />
-      </div>
-
       {/* ── SECTION 1: Hero ── */}
       <section className="relative min-h-[200vh] border-b border-outline-variant bg-background">
 
