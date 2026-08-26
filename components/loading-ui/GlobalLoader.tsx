@@ -1,14 +1,16 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { InfinityTrack } from "@/components/loading-ui/infinity-track";
+
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
 export function GlobalLoader() {
   const [isLoading, setIsLoading] = useState(true);
   const pathname = usePathname();
 
-  useEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     // Whenever the route changes (or on first load), trigger the loading animation
     setIsLoading(true);
     
@@ -23,8 +25,8 @@ export function GlobalLoader() {
   // But to keep it simple and match the old behavior, we just use opacity and pointer-events-none
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background transition-opacity duration-700 pointer-events-none ${
-        isLoading ? 'opacity-100' : 'opacity-0'
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background pointer-events-none transition-opacity ${
+        isLoading ? 'opacity-100 duration-0' : 'opacity-0 duration-700'
       }`}
     >
       <InfinityTrack />
