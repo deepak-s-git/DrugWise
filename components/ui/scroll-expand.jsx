@@ -18,8 +18,8 @@ const ScrollExpand = ({
   alt = '',
   title = '',
   scrollHint = '',
-  startWidth = 50,
-  startHeight = 16,
+  startWidth = 55,
+  startHeight = 15,
   startRadius = 150,
   endRadius = 0,
   mediaZoom = 1.35,
@@ -141,15 +141,15 @@ const ScrollExpand = ({
     const tick = () => {
       const c = propsRef.current;
       target = readProgress();
-      
+
       const k = c.smoothing <= 0 ? 1 : 1 - Math.exp(-1 / (60 * c.smoothing));
-      
+
       if (Math.abs(target - current) > 0.0001) {
         current += (target - current) * k;
       } else {
         current = target;
       }
-      
+
       applyProgress(current);
       raf = requestAnimationFrame(tick);
     };
